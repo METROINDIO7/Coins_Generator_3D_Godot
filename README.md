@@ -1,5 +1,11 @@
 # Coins Generator 3D Plugin Documentation
 
+## Demo 🎥
+![Demo](addons/tuto.gif)
+
+
+
+
 ## Overview
 Coins Generator 3D is a Godot 4.3 plugin that allows users to easily generate collectible coins along Path3D nodes. The plugin provides flexible placement options and an intuitive UI for managing coin distribution.
 
