@@ -1,7 +1,7 @@
 # Coins Generator 3D Plugin Documentation
 
 ## Demo 🎥
-![Demo](addons/tuto.gif)
+![Demo](addons/Coins_Generator/tuto.gif)
 
 
 
