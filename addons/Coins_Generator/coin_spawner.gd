@@ -155,9 +155,13 @@ func generate_coins_with_pathfollow(path: Path3D, coin_count: int) -> void:
 	for i in range(coin_count):
 		var path_follow = PathFollow3D.new()
 		path_follow.name = "PathFollow_" + path.name + "_" + str(i)
-		path_follow.progress_ratio = float(i) / float(coin_count)
+		path_follow.loop = false  # Asegurarse de que no haga un bucle
 		path_follow.rotation_mode = PathFollow3D.ROTATION_ORIENTED
 		path.add_child(path_follow)
+		
+		# Calcular el progress_ratio basado en la posición de la moneda
+		var progress_ratio = float(i) / float(coin_count - 1) if coin_count > 1 else 0.0
+		path_follow.progress_ratio = progress_ratio
 		
 		var coin = coin_scene.instantiate()
 		path_follow.add_child(coin)
@@ -204,3 +208,4 @@ func clear_coins() -> void:
 			for child in path.get_children():
 				if child is PathFollow3D:
 					child.queue_free()
+
