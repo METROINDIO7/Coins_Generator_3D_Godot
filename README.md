@@ -4,58 +4,105 @@
 ![Demo](addons/Coins_Generator/tuto.gif)
 
 
-
-
-## Overview
-Coins Generator 3D is a Godot 4.3 plugin that allows users to easily generate collectible coins along Path3D nodes. The plugin provides flexible placement options and an intuitive UI for managing coin distribution.
-
-## Installation
-1. Copy the `Coins_Generator` folder to your `res://addons/` directory.
-2. Enable the plugin in **Project Settings** > **Plugins**.
-3. You will now see the `CoinSpawner` node available in the scene tree.
+A powerful and flexible plugin for Godot 4 that allows you to procedurally generate objects along Path3D nodes. Perfect for creating "only up" style games, platformers, and any project requiring systematic object placement.
 
 ## Features
-- Custom `CoinSpawner` node for generating coins.
-- Support for direct placement or PathFollow3D-based placement.
-- Automatic coin distribution based on path length or equal distribution.
-- Easy-to-use UI with a "Generate Coins" button.
-- Configuration warnings for missing paths.
 
-## How to Use
-1. Add a `CoinSpawner` node to your scene.
-2. Assign a coin scene (`coin_scene`) to spawn.
-3. Add `Path3D` child nodes under `CoinSpawner` to define paths.
-4. Configure settings:
-   - **Total Coins**: Number of coins to generate.
-   - **Use Direct Placement**: Toggle between direct placement and PathFollow3D.
-   - **Distribute by Length**: Adjust coin distribution based on path length.
-5. Press the **Generate Coins** button in the Inspector to spawn coins.
+### Multi-Object Support
+- **Object Scenes**: Support for multiple PackedScene objects, not just coins
+- **Folder Loading**: Automatically load all .tscn files from a specified folder
+- **Random Selection**: Objects can be selected randomly or in sequence
+- **Weight System**: Assign different spawn probabilities to different objects
 
-## Settings
-### Basic Options
-- **Coin Scene**: PackedScene of the coin object.
-- **Total Coins**: Number of coins to generate.
+### Advanced Placement Options
+- **Spacing Modes**: 
+  - Uniform: Equal spacing between objects
+  - Random: Randomized spacing within specified ranges
+  - Grouped: Cluster objects in groups along the path
+- **Direct Placement**: Place objects directly along paths
+- **Length Distribution**: Spread objects proportionally based on path length
 
-### Advanced Options
-- **Use Direct Placement**: Place coins directly along paths.
-- **Distribute by Length**: Spread coins proportionally based on path length.
+### Customization Features
+- **Rotation Variance**: Add random rotation to spawned objects
+- **Scale Variation**: Randomize object scales within specified ranges
+- **Offset Controls**: Fine-tune object positioning relative to paths
+- **Preview Mode**: Visualize placement before final generation
 
 ### Generation Controls
-- **Generate Coins Button**: Creates coins according to the specified parameters.
+- **Generate Button**: One-click generation with current settings
+- **Clear Objects**: Remove all generated objects
+- **Batch Operations**: Generate across multiple Path3D nodes simultaneously
 
-## Code Breakdown
-### `Coins_Generator.gd`
-This script registers the `CoinSpawner` as a custom node in Godot's editor and adds a tool menu entry to create it easily.
+## Settings Overview
 
-### `coin_spawner.gd`
-The core script of the plugin, handling coin generation and placement based on user settings.
+### Basic Options
+- **Object Scenes**: Array of PackedScene objects to spawn
+- **Folder Path**: Optional folder path to auto-load scenes
+- **Total Objects**: Number of objects to generate
+- **Selection Mode**: Random, Sequential, or Weighted selection
+
+### Advanced Options
+- **Spacing Mode**: Choose between Uniform, Random, or Grouped
+- **Min/Max Spacing**: Control spacing ranges for random mode
+- **Rotation Range**: Set random rotation limits (degrees)
+- **Scale Variance**: Define scale randomization range
+- **Use Direct Placement**: Place objects directly along paths
+- **Distribute by Length**: Spread objects proportionally based on path length
+
+### Generation Controls
+- **Generate Objects Button**: Creates objects according to specified parameters
+- **Clear Generated Button**: Removes all previously generated objects
+- **Preview Toggle**: Show/hide placement preview
+
+## Code Structure
+
+### `plugin.gd`
+Registers the `CoinSpawner` as a custom node in Godot's editor and adds tool menu entries.
+
+### `Coin_spawner.gd`
+The core script handling object generation, placement algorithms, and user interface integration.
+
+### `Coin_spawner.tscn`
+The node scene with all UI controls and inspector properties properly configured.
+
+## Usage Instructions
+
+1. **Add CoinSpawner Node**: Create an ObjectSpawner node in your scene
+2. **Add Path3D Children**: Add one or more Path3D nodes as children
+3. **Configure Objects**: Set up your object scenes or folder path
+4. **Adjust Settings**: Configure spacing, rotation, and scale options
+5. **Generate**: Click the "Generate Objects" button to create your objects
+
+## Perfect For
+
+- **Only Up Games**: Generate platforms, obstacles, and collectibles
+- **Endless Runners**: Create procedural level elements
+- **Platformers**: Place coins, power-ups, and interactive objects
+- **Racing Games**: Add checkpoints, boosts, and track elements
+- **Adventure Games**: Scatter collectibles and environmental objects
 
 ## Notes
-- If no `Path3D` nodes are present under `CoinSpawner`, a warning will appear.
-- The plugin only runs in the editor and does not affect runtime behavior.
+
+- If no `Path3D` nodes are present under `CoinSpawner`, a warning will appear
+- The plugin only runs in the editor and does not affect runtime behavior
+- Generated objects are automatically organized in the scene tree
+- All settings are saved with the scene for easy iteration
+
+## Requirements
+
+- Godot 4.0 or later
+- Path3D nodes for object placement
+- PackedScene resources for objects to spawn
 
 ## License
+
 This plugin is open-source and free to use in any project. Contributions and improvements are welcome!
+
+## Version History
+
+- **v2.0**: Multi-object support, folder loading, advanced placement modes
+- **v1.0**: Basic coin generation along paths
+
 
 
 
