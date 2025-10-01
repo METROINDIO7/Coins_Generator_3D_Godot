@@ -1,10 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8aj81upfrn8o"]
 
-[ext_resource type="Script" path="res://addons/Coins_Generator/coin_spawner.gd" id="1_owwwc"]
+[ext_resource type="Script" uid="uid://d3m6l33k77dg1" path="res://addons/Coins_Generator/coin_spawner.gd" id="1_owwwc"]
 
 [node name="CoinSpawner" type="Node3D"]
 script = ExtResource("1_owwwc")
-total_coins = null
-use_direct_placement = null
-distribute_by_length = null
-generate_coins_button = null
